@@ -1,4 +1,5 @@
 @page "/"
+@inject UserService UserService
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
 
@@ -41,15 +42,17 @@
 @code {
     [SupplyParameterFromForm(FormName = "loginForm")]
     public Models.Login model {get; set;} = new();
+
     private bool loginFailed = false;
 
 
     private void OnValidSubmit() {
-        if(model.Username == "admin@admin.com" && model.Password == "password123") {        
+        if(model.Username == "admin@admin.com" && model.Password == "password123") {    
+            UserService.SetUsername(model.Username);
             NavigationManager.NavigateTo("/dashboard");
         }else {
             @* NavigationManager.NavigateTo("/"); *@
-        loginFailed = true;
+            loginFailed = true;
 
         }
     }

@@ -8,6 +8,7 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddServerSideBlazor();
 
+builder.Services.AddSingleton<UserService>();
 
 var app = builder.Build();
 

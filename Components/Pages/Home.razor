@@ -1,4 +1,5 @@
 ﻿@page "/dashboard"
+@inject UserService UserService
 @inject IJSRuntime JSRuntime
 
 
@@ -147,6 +148,8 @@
         </tr>
         </tbody>
     </table>
+    <h6>Username: </h6>
+    <p>@UserService.Username</p>
 </div>
 
 <!-- Graphs -->
@@ -185,7 +188,6 @@
 
 
 @code {
-
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
