@@ -1,5 +1,8 @@
 ﻿@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+
 
 @if (!IsRootRoute) {
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
@@ -41,6 +44,7 @@
     {
         if (firstRender)
         {
+            JSRuntime.InvokeVoidAsync("initializeChart");
             StateHasChanged();
         }
     }

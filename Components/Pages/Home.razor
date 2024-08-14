@@ -1,5 +1,4 @@
 ﻿@page "/dashboard"
-@inject IJSRuntime JSRuntime
 
 
 <PageTitle>Dashboard</PageTitle>
@@ -150,7 +149,8 @@
 </div>
 
 <!-- Graphs -->
-@* 
+<script src="js/Chart.min.js"></script>
+
 <script>
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
@@ -179,9 +179,9 @@
             }
         }
     });
-</script> *@
+</script>
 
-
+@* 
 @code {
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -190,4 +190,4 @@
             await JSRuntime.InvokeVoidAsync("initializeChart");
         }
     }
-}
+} *@
