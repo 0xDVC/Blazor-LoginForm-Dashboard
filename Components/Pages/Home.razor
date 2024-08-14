@@ -1,4 +1,5 @@
 ﻿@page "/dashboard"
+@inject IJSRuntime JSRuntime
 
 
 <PageTitle>Dashboard</PageTitle>
@@ -179,15 +180,17 @@
             }
         }
     });
-</script>
+</script> 
 
-@* 
+
+
 @code {
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await JSRuntime.InvokeVoidAsync("initializeChart");
+            await JSRuntime.InvokeVoidAsync("initializeScripts");
         }
     }
-} *@
+}
