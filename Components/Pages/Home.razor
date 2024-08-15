@@ -1,7 +1,6 @@
 ﻿@page "/dashboard"
+@layout Layout.DashboardLayout
 @inject UserService UserService
-@inject IJSRuntime JSRuntime
-
 
 <PageTitle>Dashboard</PageTitle>
 
@@ -184,15 +183,3 @@
         }
     });
 </script> 
-
-
-
-@code {
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JSRuntime.InvokeVoidAsync("initializeScripts");
-        }
-    }
-}
